@@ -8,12 +8,12 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          900: '#1e3a8a',
+          50: '#fdf3f3',
+          100: '#fbe4e4',
+          500: '#e53935',
+          600: '#d32f2f',
+          700: '#c62828',
+          900: '#b71c1c',
         },
         danger: {
           50: '#fef2f2',

@@ -18,9 +18,9 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Main Score Widget */}
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="col-span-1 md:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row items-center gap-8">
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="col-span-1 md:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row items-center gap-8 hover:shadow-md transition-shadow">
           <div className="relative w-40 h-40 flex-shrink-0">
-            <svg className="w-full h-full" viewBox="0 0 36 36">
+            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
               <path
                 className="text-gray-100"
                 strokeWidth="3"
@@ -44,22 +44,22 @@ export default function Dashboard() {
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-3xl font-bold text-gray-900">85<span className="text-xl text-gray-500">%</span></span>
-              <span className="text-xs text-gray-500 uppercase font-semibold">Güvende</span>
+              <span className="text-xs text-gray-500 uppercase font-semibold tracking-wider mt-1">Güvende</span>
             </div>
           </div>
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-xl font-bold text-gray-900 mb-2">Bugün denetime girseniz geçer misiniz?</h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-4 leading-relaxed">
               Tesislerinizdeki analizlere göre <strong>Büyük Uyumsuzluk</strong> tespit edilmedi ancak eksik dokümanlar yüzünden ufak puan kırılmaları mevcut.
             </p>
-            <div className="flex items-center justify-center md:justify-start gap-2 text-success-600 font-medium">
+            <div className="flex items-center justify-center md:justify-start gap-2 text-success-600 font-medium bg-success-50 w-fit md:mx-0 mx-auto px-4 py-2 rounded-full">
               <ShieldCheck className="w-5 h-5" />
               <span>Durum: Risk Seviyesi Düşük</span>
             </div>
           </div>
         </motion.div>
 
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl shadow-sm p-6 text-white flex flex-col justify-between">
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6 text-white flex flex-col justify-between">
           <div>
             <h3 className="text-lg font-medium text-primary-100">Yıllık Harcama (Yangın Güvenliği)</h3>
             <p className="text-3xl font-bold mt-2">₺ 142.500</p>
@@ -81,7 +81,7 @@ export default function Dashboard() {
           { label: 'Kritik Uyarılar', value: '3', icon: AlertTriangle, color: 'text-danger-500', bg: 'bg-danger-50' },
           { label: 'Eksik Eğitimli Personel', value: '12', icon: BookOpen, color: 'text-primary-500', bg: 'bg-primary-50' },
         ].map((stat, i) => (
-          <motion.div key={stat.label} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 + (i * 0.05) }} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4">
+          <motion.div key={stat.label} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 + (i * 0.05) }} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-4">
             <div className={`p-3 rounded-lg ${stat.bg}`}>
               <stat.icon className={`w-6 h-6 ${stat.color}`} />
             </div>
@@ -95,7 +95,7 @@ export default function Dashboard() {
 
       {/* Notifications & Latest Regs */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 line-clamp-2">
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
           <h3 className="font-bold text-gray-900 mb-4 pb-2 border-b">Bu Ay Değişen Yönetmelik Maddeleri</h3>
           <ul className="space-y-4">
             <li className="flex gap-3">
@@ -115,7 +115,7 @@ export default function Dashboard() {
           </ul>
         </motion.div>
 
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="bg-white border border-gray-100 rounded-xl shadow-sm p-6">
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
           <div className="flex justify-between items-center mb-4 pb-2 border-b">
             <h3 className="font-bold text-gray-900">Yaklaşan Görevler</h3>
             <Link to="/maintenance" className="text-sm text-primary-600 font-medium hover:underline">Tümünü gör</Link>

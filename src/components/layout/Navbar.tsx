@@ -1,8 +1,12 @@
-import { Bell, Search, LogOut } from 'lucide-react';
+import { Menu, Bell, Search, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
+interface NavbarProps {
+  onToggleSidebar?: () => void;
+}
+
+export default function Navbar({ onToggleSidebar }: NavbarProps) {
   const navigate = useNavigate();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -11,14 +15,19 @@ export default function Navbar() {
   };
 
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 z-10 sticky top-0">
+    <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200/80 flex items-center justify-between px-4 sm:px-6 z-10 sticky top-0 shadow-sm">
       <div className="flex items-center flex-1">
+        {onToggleSidebar && (
+          <button onClick={onToggleSidebar} className="mr-4 p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors hidden md:block focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <Menu className="w-5 h-5" />
+          </button>
+        )}
         <div className="max-w-md w-full relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
           </div>
           <input
-            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition duration-150 ease-in-out"
+            className="block w-full pl-10 pr-4 py-2 border border-transparent rounded-full leading-5 bg-gray-100/80 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 sm:text-sm transition-all duration-200 ease-in-out"
             placeholder="Cihaz, doküman veya alarm ara..."
             type="search"
           />
@@ -34,12 +43,12 @@ export default function Navbar() {
         <div className="relative flex items-center gap-2 border-l pl-4 border-gray-200">
           <button 
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="flex items-center gap-2 focus:outline-none"
+            className="flex items-center gap-3 focus:outline-none p-1 rounded-full hover:bg-gray-50 transition-colors"
           >
-            <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold hover:bg-primary-200 transition">
+            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center text-primary-700 font-bold shadow-inner ring-2 ring-white">
               TE
             </div>
-            <span className="text-sm font-medium text-gray-700 hidden sm:block">Test Engineer</span>
+            <span className="text-sm font-semibold text-gray-700 hidden sm:block">Test Engineer</span>
           </button>
 
           {isProfileOpen && (
